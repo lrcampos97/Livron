@@ -2,7 +2,7 @@
 
 Projeto destinado ao meu trabalho de conclusão de curso (TCC), na universidade Unisinos. O mesmo já está publicado na Play Store (<a href="https://play.google.com/store/apps/details?id=o.Livron.starter">Livron</a>) 
 
-O Código está disponível para estudo e inspiração para futuros projetos. Devido a conexão com o banco de dados restristo, **não é possível rodar o código localmente**. 
+**O Código está disponível para estudo e inspiração para futuros projetos.**
 
 # Resumo
 
@@ -22,12 +22,6 @@ O Livron permite a você:
 Por questões de propriedade intelectual, não são permitidas o uso das capas reais de livros nos screenshots disponibilizados no Google Play, porém no Livron você poderá adicionar as capas oficiais para os livros adicionados.
 
 Tenha em mente que o aplicativo Livron utiliza serviços externos para pesquisar por livros através do código ISBN ou título do livro, caso o mesmo não seja encontrado, ainda existe a opção de incluir manualmente as informações do livro.
-
-
-# Estrutura
-
-
-
 
 
 
