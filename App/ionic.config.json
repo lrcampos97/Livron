@@ -1,0 +1,14 @@
+{
+  "name": "Livron_TCC",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/localhost:8100",
+      "proxyUrl": "http://localhost/api-livron/public/livro"
+    }
+  ],
+  "id": "a9a4cebc"
+}

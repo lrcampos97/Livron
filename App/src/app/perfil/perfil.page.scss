@@ -1,0 +1,38 @@
+.user-avatar {  
+    height: 15vh;
+  }
+  
+.notes{
+  margin-left: 0px;
+}
+
+.icons{
+  margin-right: 10px;
+}
+ 
+.menu-header {
+    padding: 5px 15px;
+    //  background-image: url('./assets/img/image.jpg');
+    //  background-size: cover;
+    background-color: #FFBF00;
+    padding-right: 0px;
+    padding-left: 0px;  
+    text-align: center;
+    color: white;
+  
+    .hydrated {
+      align-items: center; 
+    }
+  
+    .name {
+      margin-bottom: 3px;
+      margin-top: 4px;
+    }
+  
+    .logo{
+      padding: .5em;
+      height: 12vh;  
+      margin-top: 10px;
+    }
+  }
+  

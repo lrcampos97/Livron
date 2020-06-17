@@ -1,0 +1,37 @@
+.profilebutton{
+    z-index: +2;
+  }
+  
+  .profilepic{
+    width: 65%;
+    height: 65%;
+  }
+  .profilepic-border{
+    background:  #a3a3a3 ;
+  }
+
+  img {
+    // max-width: 140px;
+    border-radius: 20%;
+  }
+
+  .titulo{
+    font-weight: bold;
+  }
+  
+  .img{  
+    width: auto;
+    margin: auto;
+    display: block;
+  }
+
+  .rowForm{
+    flex-direction: column;
+  }
+
+  ion-col > ion-item {      
+    padding: 10px;
+    flex-direction: inherit;
+  }
+
+  

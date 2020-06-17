@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissLogin()">Fechar</ion-button>
+      </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding" no-scroll>
+
+  <div padding-horizontal text-center class="animated fadeInDown">
+    <div class="logo"></div>  
+  </div>
+
+       <form  [formGroup]="formLogin" (ngSubmit)="login()" class="list-form">    
+        <ion-item>
+          <ion-label position="stacked" class="label">
+            <ion-icon name="contact" item-start></ion-icon>
+            Usuário
+          </ion-label>
+          <ion-input type="text" formControlName="usuario" required></ion-input>
+        </ion-item>    
+          
+        <ion-item class="itemSenha">
+            <ion-label position="stacked" class="label">
+              <ion-icon name="lock" item-start ></ion-icon>
+              Senha
+            </ion-label>
+            <ion-input type="password" formControlName="senha" required></ion-input>   
+        </ion-item>           
+  
+        <div class="button-entrar">
+            <ion-button type="submit" expand="block" [disabled]="formLogin.invalid" color="primary">
+                Entrar
+            </ion-button>
+        </div>        
+      </form> 
+
+</ion-content>

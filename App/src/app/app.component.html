@@ -1,0 +1,81 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu (ionOpen)="menuOpened()"> 
+      <ion-content>
+
+           <div class="menu-header">              
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                      <ion-icon name="star"></ion-icon>
+                      {{ usuario.XP }} XP
+                  </ion-col> 
+                  <ion-col size="4" >
+                      <img class="user-avatar round" [src]="usuario.AVATAR" />  
+                      <p class="name"><strong>{{ usuario.NOME }}</strong></p>
+                  </ion-col>
+                  <ion-col tappable (click)="ranking()">
+                      <ion-icon name="stats" item-start ></ion-icon>
+                      {{ usuario.POSICAO_RANKING }}°
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+           </div> 
+
+        <ion-list>
+          <ion-menu-toggle auto-hide="false">
+              <ion-item [routerLink]="['/estante']" routerDirection="forward" lines="none" >
+                <ion-icon slot="start" name="book"></ion-icon>
+                <ion-label>
+                  Minha Estante
+                </ion-label>
+              </ion-item>   
+
+            <ion-item [routerLink]="['/amigos']" routerDirection="forward" lines="none">
+              <ion-icon slot="start" name="contacts"></ion-icon>
+              <ion-label>
+                Meus Amigos
+              </ion-label>
+            </ion-item>      
+
+            <ion-item [routerLink]="['/emprestimo']" routerDirection="forward" lines="none">
+              <ion-icon slot="start" name="swap"></ion-icon>
+              <ion-label>
+                Meus Empréstimos
+              </ion-label>
+            </ion-item>    
+
+            <ion-item [routerLink]="['/solicitacoes-emprestimo']" routerDirection="forward" lines="none">
+              <ion-icon slot="start" name="sync"></ion-icon>
+              <ion-label>
+                Solicitações de Empréstimo
+              </ion-label>
+            </ion-item>              
+
+            <ion-item [routerLink]="['/ranking']" routerDirection="forward" lines="none">
+              <ion-icon slot="start" name="stats"></ion-icon>
+              <ion-label>
+                Ranking de Leitores
+              </ion-label>
+            </ion-item>   
+            
+            <ion-item [routerLink]="['/perfil']" routerDirection="forward" lines="none">
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label>
+                Meu Perfil
+              </ion-label>
+            </ion-item>  
+                        
+        </ion-menu-toggle>             
+        </ion-list>
+      </ion-content>
+      <ion-footer>
+        <ion-item button lines="none" (click)="logout()">
+          <ion-icon name="exit"></ion-icon>
+          Sair
+        </ion-item>
+      </ion-footer>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

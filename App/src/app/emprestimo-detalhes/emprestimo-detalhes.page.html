@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalhes Empréstimo</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-list>
+    <ion-item lines="full" class="ion-text-center">
+      <img *ngIf="!emprestimo.IMAGEM_DESCRICAO" src="assets/img/book-128.png" class="img">
+      <img class="imagemDetail" *ngIf="emprestimo.IMAGEM_DESCRICAO" [src]="emprestimo.IMAGEM_DESCRICAO" class="img">
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="ion-text-wrap">
+        <p style="font-weight: bold;">Livro</p>
+        <p>{{ emprestimo.LIVRO_TITULO }}</p>
+        <p style="font-weight: bold;">Responsável</p>
+        <p>{{ emprestimo.RESPONSAVEL_LOGIN }}</p>
+        <p style="font-weight: bold;">Ponto de Coleta</p>
+        <p>{{ emprestimo.PONTO_COLETA_RAZAO }}</p>
+        <p style="font-weight: bold;">Data Emprestimo</p>
+        <p>{{ emprestimo.DATA_EMPRESTIMO }}</p>
+        
+        <div *ngIf="emprestimo.DATA_ENTREGA">
+          <p style="font-weight: bold;">Data Entrega</p>
+          <p>{{ emprestimo.DATA_ENTREGA }}</p>
+        </div>
+
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" [disabled]="emprestimo.DATA_ENTREGA">MARCAR COMO DEVOLVIDO</ion-button>
+</ion-content>

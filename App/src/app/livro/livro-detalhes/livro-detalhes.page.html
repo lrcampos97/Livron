@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ livro.TITULO }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item lines="full">
+      <img *ngIf="!livro.IMAGEM_DESCRICAO" src="assets/img/book-128.png">
+      <img class="imagemDetail" *ngIf="livro.IMAGEM_DESCRICAO" [src]="livro.IMAGEM_DESCRICAO">
+      <ion-label class="ion-text-wrap">
+        <p style="font-weight: bold;">ISBN</p>
+        <p>{{ livro.ISBN }}</p>
+        <p style="font-weight: bold;">Autor(a)</p>
+        <p>{{ livro.AUTOR }}</p>
+        <p style="font-weight: bold;">Páginas</p>
+        <p>{{ livro.PAGINAS }}</p>
+        <p style="font-weight: bold;">Editora</p>
+        <p>{{ livro.EDITORA }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-item lines="full">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <div>
+            <ion-button fill="clear" color="dark">
+              <ion-icon slot="icon-only" name="thumbs-up" size="large"></ion-icon>
+              <!-- Curtir -->
+            </ion-button>
+          </div>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <div>
+            <ion-button fill="clear" color="dark" (click)="solicitarEmprestimo(livro.LIVRO_ID, livro.USUARIO_PROPRIETARIO_ID)">
+              <ion-icon slot="icon-only" name="swap" size="large"></ion-icon>
+              <!-- Avaliações -->
+            </ion-button>
+          </div>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <div>
+            <ion-button fill="clear" color="dark" (click)="share()">
+              <ion-icon slot="icon-only" name="share" size="large"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="stacked" class="my-label">Sinopse</ion-label>
+    <ion-text class="ion-text-left">
+      <p>{{ livro.RESUMO }}</p>
+    </ion-text>
+  </ion-item>
+
+  <div *ngIf="donoLivro">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink="/novo-livro/{{ livro.LIVRO_ID }}" routerDirection="forward">
+        <ion-icon name="create">
+        </ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+
+</ion-content>

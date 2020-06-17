@@ -1,0 +1,145 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Minha Estante
+    </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="toggle()">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="tipos" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="2">
+      Todos
+    </ion-segment-button>
+    <ion-segment-button value="0">
+      Lidos
+    </ion-segment-button>
+    <ion-segment-button value="1">
+      Não Lidos
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-searchbar animated *ngIf="toggled" [(ngModel)]="someValue">
+  </ion-searchbar>
+
+  <div *ngIf="tipos == 2">
+    <div *ngIf="livros.length > 0">
+      <ion-list #livroList (ionChange)="atualizarListaLivros()">
+        <ion-item-sliding *ngFor="let livro of (livros)" #slidingItem>
+          <ion-item button routerLink="/livro-detalhes/{{ livro.LIVRO_ID }}" routerDirection="forward">
+            <ion-thumbnail slot="start">
+              <img *ngIf="!livro.IMAGEM_DESCRICAO" src="assets/img/book-64.png">
+              <img *ngIf="livro.IMAGEM_DESCRICAO" [src]="livro.IMAGEM_DESCRICAO">
+            </ion-thumbnail>
+            <ion-label>
+              <h3><strong>{{livro.TITULO}}</strong></h3>
+              <h4>{{livro.SUBTITULO}}</h4>
+              <p>{{livro.AUTOR}}</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Opções do slidingItem -->
+          <ion-item-options>
+            <ion-item-option color="danger" (click)="excluirLivro(slidingItem, livro)">
+              Excluir
+            </ion-item-option>
+          </ion-item-options>
+
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+    <div text-center *ngIf="livros.length <= 0" class="ion-padding">
+      <ion-label>Nenhum Livro encontrado.</ion-label>
+      <ion-icon name="sad" size="small" ></ion-icon>
+    </div>
+  </div>
+
+  <div *ngIf="tipos == 1">
+    <div *ngIf="livrosNaoLidos.length > 0">
+      <ion-list #livroList (ionChange)="atualizarListaLivros()">
+        <ion-item-sliding *ngFor="let livro of (livrosNaoLidos)" #slidingItem>
+          <ion-item button routerLink="/livro-detalhes/{{ livro.LIVRO_ID }}" routerDirection="forward">
+            <ion-thumbnail slot="start">
+              <img *ngIf="!livro.IMAGEM_DESCRICAO" src="assets/img/book-64.png">
+              <img *ngIf="livro.IMAGEM_DESCRICAO" [src]="livro.IMAGEM_DESCRICAO">
+            </ion-thumbnail>
+            <ion-label>
+              <h3><strong>{{livro.TITULO}}</strong></h3>
+              <h4>{{livro.SUBTITULO}}</h4>
+              <p>{{livro.AUTOR}}</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Opções do slidingItem -->
+          <ion-item-options>
+            <ion-item-option color="danger" (click)="excluirLivro(slidingItem, livro)">
+              Excluir
+            </ion-item-option>
+          </ion-item-options>
+
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+    <div text-center *ngIf="livrosNaoLidos.length <= 0" class="ion-padding">
+      <ion-label>Nenhum Livro encontrado.</ion-label>
+      <ion-icon name="sad" size="small" ></ion-icon>
+    </div>
+  </div>
+
+  <div *ngIf="tipos == 0">
+    <div *ngIf="livrosLidos.length > 0">
+      <ion-list #livroList (ionChange)="atualizarListaLivros()">
+        <ion-item-sliding *ngFor="let livro of (livrosLidos)" #slidingItem>
+          <ion-item button routerLink="/livro-detalhes/{{ livro.LIVRO_ID }}" routerDirection="forward">
+            <ion-thumbnail slot="start">
+              <img *ngIf="!livro.IMAGEM_DESCRICAO" src="assets/img/book-64.png">
+              <img *ngIf="livro.IMAGEM_DESCRICAO" [src]="livro.IMAGEM_DESCRICAO">
+            </ion-thumbnail>
+            <ion-label>
+              <h3><strong>{{livro.TITULO}}</strong></h3>
+              <h4>{{livro.SUBTITULO}}</h4>
+              <p>{{livro.AUTOR}}</p>
+            </ion-label>
+          </ion-item>
+
+          <!-- Opções do slidingItem -->
+          <ion-item-options>
+            <ion-item-option color="danger" (click)="excluirLivro(slidingItem, livro)">
+              Excluir
+            </ion-item-option>
+          </ion-item-options>
+
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+    <div text-center *ngIf="livrosLidos.length <= 0" class="ion-padding">
+      <ion-label>Nenhum Livro encontrado.</ion-label>
+      <ion-icon name="sad" size="small" ></ion-icon>
+    </div>
+  </div>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light" routerLink="/novo-livro/-1" routerDirection="forward">
+        <ion-icon name="barcode"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" (click)="abrirPesquisaLivros()">
+        <ion-icon name="search"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" routerLink="/novo-livro/0" routerDirection="forward">
+        <ion-icon name="hand"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

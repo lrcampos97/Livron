@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+      </ion-buttons>
+    <ion-title> Meus Amigos ({{ qtdAmigos }})</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list (ionChange)="atualizarAmigos()">
+    <div *ngIf="!buscando">
+      <ion-item  lines="none" *ngFor="let usuarioAmigo of (usuarioAmigos)" >          
+        <ion-avatar class="avatar-label">
+          <img [src]="usuarioAmigo.AVATAR">
+        </ion-avatar>    
+        <ion-label>             
+          {{usuarioAmigo.NOME}}
+        </ion-label>
+        <ion-button size="small" (click)="excluirAmizade(usuarioAmigo.NOME, usuarioAmigo.USUARIO_OUTRO_ID)">Excluir</ion-button>
+      </ion-item>    
+    </div>
+
+    <div text-center *ngIf="buscando">
+        <ion-spinner name="dots"></ion-spinner>        
+    </div>
+  </ion-list>
+</ion-content>

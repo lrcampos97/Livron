@@ -1,0 +1,59 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+rating {
+    ion-icon {
+      color: gray;
+  
+      &.filled {
+        //color: #26ff00;
+        fill: #26ff00;
+      }
+    }
+}
+
+.user-avatar {  
+  height: 15vh;
+}
+
+
+.buttonPrincipal{
+  display: flex;
+    flex: auto;
+}
+
+
+.menu-header {
+  padding: 5px 15px;
+  //  background-image: url('./assets/img/image.jpg');
+  //  background-size: cover;
+  background-color: #FFBF00;
+  padding-right: 0px;
+  padding-left: 0px;  
+  text-align: center;
+  color: white;
+
+  .hydrated {
+    align-items: center; 
+  }
+
+  .name {
+    margin-bottom: 3px;
+    margin-top: 4px;
+  }
+
+  .logo{
+    padding: .5em;
+    height: 12vh;  
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,38 @@
+.my-label {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .titulo{
+    font-size: 1.2em;
+    font-weight: bold;    
+  }
+
+  .img{
+    width: auto;
+    margin: auto;
+    display: block;
+  }
+
+  .texto{
+    font-size: 1.5em;
+  }
+  
+  .button-native .button-inner {
+    flex-direction: column;
+  }
+
+  .button-icon .icon {
+    display: block; /*** icons on the texts ***/
+    font-size: 36px; /*** increase size of icons ***/
+    margin-bottom: 3px;
+  }
+
+  .list-md{
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+
+  .imagemDetail{
+    padding-right: 10px;
+  }

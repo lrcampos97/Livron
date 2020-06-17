@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Meus Empréstimos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-segment [(ngModel)]="tipos" (ionChange)="segmentChanged($event)">
+  <ion-segment-button value="0">
+    Peguei Emprestado
+  </ion-segment-button>
+  <ion-segment-button value="1">
+    Emprestei
+  </ion-segment-button>
+</ion-segment>
+<ion-content>
+
+  <div text-center *ngIf="buscando">
+    <ion-spinner name="circles"></ion-spinner>
+  </div>
+
+  <div text-center *ngIf="!buscando">
+    <div *ngIf="tipos == 0">
+      <div *ngIf="pegueiEmprestado.length > 0">
+        <ion-list (ionChange)="atualizarLivros()">
+          <ion-item button *ngFor="let emprestimo of (pegueiEmprestado)" routerLink="/emprestimo-detalhes/{{ emprestimo.EMPRESTIMO_ID }}" routerDirection="forward">
+            <ion-thumbnail slot="start">
+              <img *ngIf="!emprestimo.IMAGEM_DESCRICAO" src="assets/img/book-64.png">
+              <img *ngIf="emprestimo.IMAGEM_DESCRICAO" [src]="emprestimo.IMAGEM_DESCRICAO">
+            </ion-thumbnail>
+            <ion-label> 
+              <h3><strong>{{emprestimo.LIVRO_TITULO}}</strong></h3>
+              <h4>{{emprestimo.LIVRO_SUBTITULO}}</h4>
+              <p>{{emprestimo.LIVRO_AUTOR}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div text-center *ngIf="pegueiEmprestado.length <= 0" class="ion-padding">
+        <ion-label>Nenhum Livro encontrado.</ion-label>
+        <ion-icon name="sad" size="small" ></ion-icon>
+      </div>
+    </div>
+
+    <div *ngIf="tipos == 1">
+      <div *ngIf="emprestei.length > 0">
+        <ion-list (ionChange)="atualizarLivros()">
+          <ion-item button *ngFor="let emprestimo of (emprestei)" routerLink="/emprestimo-detalhes/{{ emprestimo.EMPRESTIMO_ID }}" routerDirection="forward">
+            <ion-thumbnail slot="start">
+              <img *ngIf="!emprestimo.IMAGEM_DESCRICAO" src="assets/img/book-64.png">
+              <img *ngIf="emprestimo.IMAGEM_DESCRICAO" [src]="emprestimo.IMAGEM_DESCRICAO">
+            </ion-thumbnail>
+            <ion-label>
+              <h3><strong>{{emprestimo.LIVRO_TITULO}}</strong></h3>
+              <h4>{{emprestimo.LIVRO_SUBTITULO}}</h4>
+              <p>{{emprestimo.LIVRO_AUTOR}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div text-center *ngIf="emprestei.length <= 0" class="ion-padding">
+        <ion-label>Nenhum Livro encontrado.</ion-label>
+        <ion-icon name="sad" size="small" ></ion-icon>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

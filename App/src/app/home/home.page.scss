@@ -1,0 +1,62 @@
+.welcome-card ion-img {
+  //max-height: 35vh;
+  overflow: hidden;
+}
+
+
+.buttonPrincipal{
+  display: flex;
+    flex: auto;
+}
+
+.avatar{
+  height: 50px !important;
+  width: 50px !important;
+}
+
+.header{
+  padding-left: 2px; 
+  padding-top: 2px;
+  padding-right: 0px;
+}
+
+.col{
+  display: flex;
+  align-items: center;
+  padding-left: 0px;  
+}
+
+.colAdd{
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 0px;
+}
+
+.buttonAdd{
+  padding-right: 0px;
+}
+
+.sizeicon{
+  font-size: 25px;
+}
+
+.colAvatar{
+  display: flex;
+    align-items: center;
+    padding-right: 0px;
+}
+
+.resumo{
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.title{
+  padding-left: 10px;
+  margin-top: 0px; 
+}
+
+.subtitle{
+  padding-left: 10px; 
+}

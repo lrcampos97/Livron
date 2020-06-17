@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Pesquisar Livros</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Fechar</ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-searchbar animated  [(ngModel)]="pesquisa" placeholder="digite o título do livro" (ionChange)="buscarLivros()">
+            </ion-searchbar>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    <div *ngIf="!buscando">
+      <ion-list *ngFor="let livro of (livros)">  
+        <ion-item button (click)="enviarLivroParaCadastro(livro)">
+          <ion-thumbnail slot="start">          
+          <ion-img [src]="livro.IMAGE"></ion-img>
+          </ion-thumbnail>
+          <ion-label>             
+            <h3><strong>{{livro.TITULO}}</strong></h3>
+            <h4>{{livro.SUBTITULO}}</h4>
+            <p>{{livro.AUTOR}}</p> 
+          </ion-label>
+        </ion-item>         
+      </ion-list>
+    </div>
+
+    <div text-center *ngIf="buscando">
+        <ion-spinner name="dots"></ion-spinner>        
+    </div>
+
+</ion-content>

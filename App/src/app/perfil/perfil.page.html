@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+
+    <ion-title>Meu Perfil</ion-title>
+
+    <ion-buttons slot="end">
+        <ion-button (click)="settings()">      
+          <ion-icon slot="icon-only" name="settings"></ion-icon>
+        </ion-button>
+      </ion-buttons>  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <div class="menu-header">              
+      <ion-grid> 
+        <ion-row>
+          <ion-col>
+              <ion-icon name="star"></ion-icon>
+              {{ usuario.XP }} XP
+          </ion-col>
+          <ion-col size="4" >
+              <img class="user-avatar round" [src]="usuario.AVATAR" />  
+              <p class="name"><strong>{{ usuario.NOME }}</strong></p>
+          </ion-col>
+          <ion-col tappable (click)="ranking()">
+              <ion-icon name="stats" item-start ></ion-icon>
+              {{ usuario.POSICAO_RANKING }}°
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </div> 
+
+    <ion-list (ionChange)="atualizarConquistas()" > 
+        <ion-list-header>            
+            <strong>Suas Conquistas</strong>
+        </ion-list-header>
+
+        <div *ngIf="!buscando">
+          <ion-item  lines="none" *ngFor="let usuarioConquista of (usuarioConquistas)" >          
+            <ion-icon name="ribbon" slot="start" class="icons"></ion-icon> 
+            <ion-label>             
+              {{usuarioConquista.DESCRICAO}}
+            </ion-label>
+            <ion-note class="notes" slot="end" color="success">{{usuarioConquista.XP}} XP</ion-note> 
+          </ion-item>    
+        </div>
+
+        <div text-center *ngIf="buscando">
+            <ion-spinner name="dots"></ion-spinner>        
+        </div>
+        
+      <ion-list-header>            
+          <strong>Próximas Conquistas</strong>
+      </ion-list-header>
+
+      <div *ngIf="!buscando">
+        <ion-item  lines="none" *ngFor="let proximaConquista of (proximasConquistas)" disabled="true">    
+          <ion-icon name="ribbon" slot="start" class="icons"></ion-icon>       
+          <ion-label>             
+            {{proximaConquista.DESCRICAO}}
+          </ion-label>
+          <ion-note class="notes" slot="end" color="danger">{{proximaConquista.XP}} XP</ion-note> 
+        </ion-item>
+      </div>   
+
+      <div text-center *ngIf="buscando">
+          <ion-spinner name="dots"></ion-spinner>        
+      </div>
+    
+    <ion-list-header>            
+        <strong>Bônus Livron</strong>
+    </ion-list-header>
+    
+    <div text-center *ngIf="!usuarioAtivo">
+      <ion-item button lines="none" (click)="showPremio(5)" disabled="true">
+        <ion-icon name="gift" slot="start"></ion-icon> 
+        <ion-label>Prêmio usuário ativo</ion-label>
+        <ion-note class="notes" slot="end" color="success"> 1000 XP</ion-note> 
+      </ion-item>
+    </div>
+
+    <div text-center *ngIf="usuarioAtivo">
+        <ion-item button lines="none" (click)="showPremio(5)">
+          <ion-icon name="gift" slot="start"></ion-icon> 
+          <ion-label>Prêmio usuário ativo</ion-label>
+          <ion-note class="notes" slot="end" color="success"> 1000 XP</ion-note> 
+        </ion-item>
+      </div>
+
+      <div text-center *ngIf="!usuarioColaborador">
+          <ion-item button lines="none" (click)="showPremio(10)" disabled="true">
+            <ion-icon name="gift" slot="start"></ion-icon> 
+            <ion-label>Prêmio usuário colaborador</ion-label>
+            <ion-note class="notes" slot="end" color="success"> 2000 XP</ion-note> 
+          </ion-item>
+      </div>
+
+    <div text-center *ngIf="usuarioColaborador">
+        <ion-item button lines="none" (click)="showPremio(10)">
+          <ion-icon name="gift" slot="start"></ion-icon> 
+          <ion-label>Prêmio usuário colaborador</ion-label>
+          <ion-note class="notes" slot="end" color="success"> 2000 XP</ion-note> 
+        </ion-item>
+    </div>
+
+  </ion-list>
+  
+</ion-content>

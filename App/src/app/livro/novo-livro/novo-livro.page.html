@@ -1,0 +1,105 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>    
+      <ion-title>{{ livro.TITULO }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <ion-item class="ion-text-center" lines="none">     
+    <img *ngIf="!livro.IMAGEM_DESCRICAO" src="assets/img/book-128.png" alt="avatar" class="img">
+    <img *ngIf="livro.IMAGEM_DESCRICAO" [src]="livro.IMAGEM_DESCRICAO" alt="avatar" class="img">
+  </ion-item>
+
+    <form [formGroup]="formLivro" (ngSubmit)="salvarLivro()" #loginForm="ngForm" >
+      <ion-grid>
+        <ion-row class="rowForm">
+          <ion-item>
+            <ion-label position="stacked" class="titulo"> Titulo</ion-label>
+            <ion-input  type="text"  rows="8" formControlName="titulo" placeholder="digite o título"></ion-input>
+          </ion-item> 
+        </ion-row>
+
+        <ion-row class="rowForm">
+          <ion-item>
+            <ion-label position="stacked" class="titulo"> Subtítulo</ion-label>
+            <ion-input  type="text"  rows="8" formControlName="subtitulo" placeholder="digite o Subtítulo"></ion-input>
+          </ion-item> 
+        </ion-row>
+
+        <ion-row class="rowForm">
+          <ion-item>
+            <ion-label position="stacked" class="titulo"> Autor(a)</ion-label>
+            <ion-input type="text"  rows="8" formControlName="autor" placeholder="digite o nome do autor(a)"></ion-input>
+          </ion-item>    
+        </ion-row>
+
+        <ion-row class="rowForm">
+          <ion-item>
+            <ion-label position="stacked" class="titulo"> ISBN</ion-label>
+            <ion-input type="number"  rows="8" formControlName="ISBN" placeholder="digite o código ISBN"></ion-input>
+          </ion-item>        
+        </ion-row>
+
+        <ion-row class="rowForm">
+          <ion-item >
+            <ion-label position="stacked" class="titulo"> Editora</ion-label>
+            <ion-input type="text"  rows="8" formControlName="editora" placeholder="digite o nome da editora"></ion-input>
+          </ion-item>
+        </ion-row> 
+          
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="stacked" class="titulo"> Paginas</ion-label>
+              <ion-input type="number"  rows="8" formControlName="paginas"></ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="stacked" class="titulo"> Ano</ion-label>
+              <ion-input type="number"  rows="8" formControlName="ano"></ion-input>
+            </ion-item>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row class="rowForm">
+          <ion-item>
+            <ion-label>Gênero</ion-label>
+            <ion-select interface="popover" formControlName="genero">      
+              <ion-select-option *ngFor="let genero of generos" value="{{genero.LIVRO_GENERO_ID}}">{{ genero.DESCRICAO }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-row>
+
+        <ion-row class="rowForm">
+          <ion-item>
+            <ion-label>Status Leitura</ion-label>
+            <ion-select interface="popover" formControlName="status">      
+              <ion-select-option value="0">Lido</ion-select-option>
+              <ion-select-option value="1">Não Lido</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-row>
+
+        <ion-row class="rowForm">
+          <ion-item>
+            <ion-label position="stacked" class="titulo"> Sinopse</ion-label>
+            <ion-textarea placeholder="Digite um breve resumo do livro... (mínimo 15 caracteres)"  rows="8" formControlName="resumo" ></ion-textarea>
+          </ion-item>
+        </ion-row>
+      </ion-grid>
+    </form>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+      <ion-fab-button [disabled]="!loginForm.form.valid" (click)="loginForm.ngSubmit.emit()" >
+        <ion-icon name="checkmark">
+        </ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+        
+</ion-content>

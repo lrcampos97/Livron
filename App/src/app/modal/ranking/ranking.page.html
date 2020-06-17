@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ranking de Leitores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+
+      </ion-col>
+      <ion-col text-center>
+
+        <div text-center *ngIf="!buscando">
+          <ion-chip>
+            <ion-avatar>
+              <img src="assets/img/trofeu_1.png">
+            </ion-avatar>
+            <ion-label>1º <strong>{{ usuarioPrimeiro }}</strong> </ion-label>            
+          </ion-chip>
+          <ion-note  slot="end" color="success">{{ usuarioPrimeiroXP }} XP</ion-note>
+        </div>
+
+        <div text-center *ngIf="buscando">
+          <ion-spinner name="circles"></ion-spinner>
+        </div>
+
+      </ion-col>
+      <ion-col text-center>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <div text-center *ngIf="!buscando"> 
+          <ion-chip>
+            <ion-avatar>
+              <img src="assets/img/trofeu_1.png">
+            </ion-avatar>
+            <ion-label>2º <strong>{{ usuarioSegundo }}</strong> </ion-label>          
+          </ion-chip>
+          <ion-note  slot="end" color="success">{{ usuarioSegundoXP }} XP</ion-note>
+        </div>
+
+        <div text-center *ngIf="buscando">
+          <ion-spinner name="circles"></ion-spinner>
+        </div>
+      </ion-col>
+      <ion-col text-center>
+      </ion-col>
+      <ion-col text-center>
+        <div text-center *ngIf="!buscando">
+          <ion-chip>
+            <ion-avatar>
+              <img src="assets/img/trofeu_1.png">
+            </ion-avatar>
+            <ion-label>3º <strong>{{ usuarioTerceiro }}</strong> </ion-label>            
+          </ion-chip>
+          <ion-note  slot="end" color="success">{{ usuarioTerceiroXP }} XP</ion-note>
+        </div>
+
+        <div text-center *ngIf="buscando">
+          <ion-spinner name="circles"></ion-spinner>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div text-center *ngIf="!buscando">
+    <ion-list>
+      <ion-item lines="none" *ngFor="let usuario of (ranking)">
+        <ion-label>
+          <strong style="margin-right: 30px;"> {{usuario.POSICAO}} </strong>
+          {{usuario.LOGIN}}
+        </ion-label>
+        <ion-note class="notes" slot="end" color="success">{{usuario.XP}} XP</ion-note>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div text-center *ngIf="buscando">
+    <ion-label>
+      <ion-spinner name="dots"></ion-spinner>
+    </ion-label>
+  </div>
+
+</ion-content>

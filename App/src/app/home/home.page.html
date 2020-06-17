@@ -1,0 +1,99 @@
+<ion-content>
+  <!-- <rating [(ngModel)]="rate" readonly="false" size="10" (ngModelChange)="onRateChange($event)"> </rating> -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Puxe para atualizar" refreshingSpinner="circles"
+      refreshingText="Consultando novos Livros...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="!buscando">
+    <ion-card class="welcome-card" *ngFor="let livro of (livrosDisponiveis)">
+      <ion-card-header class="header">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3" class="colAvatar">
+              <ion-avatar class="avatar">
+                <img [src]="livro.USUARIO_AVATAR"> 
+              </ion-avatar>
+            </ion-col>
+            <ion-col class="col">
+              <p><strong>{{livro.PROPRIETARIO}}</strong> <br>at {{livro.DATA}} </p>
+            </ion-col>
+            <ion-col size="4" class="colAdd">
+              <ion-button fill="clear" color="dark" (click)="addAmigo(livro.USUARIO_PROPRIETARIO_ID, livro.PROPRIETARIO)">
+                <ion-icon class="sizeicon" name="person-add"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-card-title class="title">{{livro.TITULO}}</ion-card-title>
+        <ion-card-subtitle class="subtitle">{{livro.SUBTITULO}}</ion-card-subtitle>
+      </ion-card-header>
+      
+      <ion-card-content button routerLink="/livro-detalhes/{{ livro.LIVRO_ID }}" routerDirection="forward">
+        <ion-row>
+          <ion-col col-4></ion-col>
+          <ion-col col-4>
+            <ion-img *ngIf="!livro.IMAGEM_DESCRICAO" src="assets/img/book-64.png"></ion-img>
+            <ion-img *ngIf="livro.IMAGEM_DESCRICAO" [src]="livro.IMAGEM_DESCRICAO"></ion-img>
+          </ion-col>
+          <ion-col col-4></ion-col>
+        </ion-row>
+        <p class="resumo">{{ livro.RESUMO }}</p>
+      </ion-card-content>
+      <ion-footer>
+        <ion-buttons slot="start">
+          <ion-button fill="clear">
+            <ion-icon slot="start" name="heart" size="small"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear">
+            <ion-icon slot="start" name="thumbs-down" size="small"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" (click)="solicitarEmprestimo(livro.LIVRO_ID, livro.USUARIO_PROPRIETARIO_ID)">
+            <ion-icon slot="start" name="swap" size="small"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-footer>
+    </ion-card>
+  </div>
+
+  <div *ngIf="buscando">
+    <ion-card class="welcome-card" *ngFor="let livro of (fakeLivros)">
+      <ion-card-header class="header">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3" class="colAvatar">
+              <ion-avatar class="avatar">
+                <ion-skeleton-text></ion-skeleton-text>
+              </ion-avatar>
+            </ion-col>
+            <ion-col class="col">
+              <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+              <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/perfil']" routerDirection="forward" lines="none">
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-footer>

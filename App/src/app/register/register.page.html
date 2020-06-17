@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissRegister()">Fechar</ion-button>
+      </ion-buttons>
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <ion-list-header>
+    <ion-label><strong>Dados Cadastrais</strong></ion-label>
+  </ion-list-header>
+  <form [formGroup]="register" (ngSubmit)="cadastrar()" class="list-form">
+    <ion-grid>
+      <ion-row class="rowForm">
+        <ion-item >
+          <ion-label position="stacked" class="titulo"> Nome</ion-label>
+          <ion-input type="text" rows="8" formControlName="nome" placeholder="digite o nome"></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-row class="rowForm">
+        <ion-item class="itens">
+          <ion-label position="stacked" class="titulo"> Usuário</ion-label>
+          <ion-input type="text" rows="8" formControlName="usuario" placeholder="digite o usuário"></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-row class="rowForm">
+        <ion-item class="itens">
+          <ion-label position="stacked" class="titulo"> E-mail</ion-label>
+          <ion-input type="email" rows="8" formControlName="email" placeholder="digite o E-mail"></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-row class="rowForm">
+        <ion-item class="itens">
+          <ion-label position="stacked" class="titulo"> Senha</ion-label>
+          <ion-input type="text" rows="8" formControlName="senha" placeholder="digite sua senha"></ion-input>
+        </ion-item>
+      </ion-row>
+    </ion-grid>
+
+    <ion-list-header><strong>Escolha o ícone do seu perfil</strong></ion-list-header>
+    <div class="cc-selector-2">        
+        <ion-label class="drinkcard-cc lazybones" for="lazybones" (click)="setAvatar(0)"></ion-label>        
+        <ion-label class="drinkcard-cc girl"for="girl" (click)="setAvatar(1)"></ion-label>
+        <ion-label class="drinkcard-cc male"for="male" (click)="setAvatar(2)"></ion-label>
+        <ion-label class="drinkcard-cc batman"for="batman" (click)="setAvatar(3)"></ion-label>
+        <ion-label class="drinkcard-cc zombie"for="zombie" (click)="setAvatar(4)"></ion-label>
+        <ion-label class="drinkcard-cc coffe"for="coffe" (click)="setAvatar(5)"></ion-label>
+    </div>
+
+    <div class="button-entrar">
+      <ion-button type="submit" expand="block" [disabled]="register.invalid && avatar === -1" color="primary">
+        PRONTO!
+      </ion-button>
+    </div>
+  </form>
+</ion-content>
