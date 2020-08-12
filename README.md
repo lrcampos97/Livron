@@ -1,4 +1,4 @@
-<img src="https://lh4.googleusercontent.com/J676kyIuRkVPJ2ZV4Iybv5dT2N0hLIOkeSybfzjPghDHm2zaQ5xETyT7yICRkkX6FTow-ZSvaMNJ3Q=w1920-h942">
+<img src="https://lh4.googleusercontent.com/pQE-QIichECfdDGBlU6npZyl3HwXbVe-1k4gVPVAkSLVgrVEvtfE6GyNmrsfeUIxGjhNlWe-ib0GXQ=w1920-h969">
 
 Projeto destinado ao meu trabalho de conclusão de curso (TCC), na universidade Unisinos. O mesmo já está publicado na Play Store (<a href="https://play.google.com/store/apps/details?id=o.Livron.starter">Livron</a>) 
 
@@ -25,5 +25,5 @@ Tenha em mente que o aplicativo Livron utiliza serviços externos para pesquisar
 
 # Estrutura
 
-<img src="https://lh4.googleusercontent.com/5MNHQ8N4XRXK_Pl0_Vd-CUpUyg14i_lkZW8dEHiKRZAQ4UqQHIyR2GHKMD5Nqwor04OtrAh4vehBAA=w1920-h942-rw">
+<img src="https://lh6.googleusercontent.com/WR26iLP-Gpvrb49KTv5gE3xhcnZUzqjZhQhQF5VbnutQTIHG6mO2KcB-T49tQX85n-4q88kREUrhEQ=w1920-h969-rw">
 
