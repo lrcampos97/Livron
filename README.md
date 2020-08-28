@@ -1,4 +1,4 @@
-<img src="https://lh4.googleusercontent.com/pQE-QIichECfdDGBlU6npZyl3HwXbVe-1k4gVPVAkSLVgrVEvtfE6GyNmrsfeUIxGjhNlWe-ib0GXQ=w1920-h969">
+<img src="https://raw.githubusercontent.com/lrcampos97/Livron/master/App/resources/icon.png" height="200" width="200">
 
 Projeto destinado ao meu trabalho de conclusão de curso (TCC), na universidade Unisinos. O mesmo já está publicado na Play Store (<a href="https://play.google.com/store/apps/details?id=o.Livron.starter">Livron</a>) 
 
@@ -23,7 +23,12 @@ Por questões de propriedade intelectual, não são permitidas o uso das capas r
 
 Tenha em mente que o aplicativo Livron utiliza serviços externos para pesquisar por livros através do código ISBN ou título do livro, caso o mesmo não seja encontrado, ainda existe a opção de incluir manualmente as informações do livro.
 
+# Imagens
+
+<img src="https://raw.githubusercontent.com/lrcampos97/Livron/master/App/src/assets/img/Livros.png">
+<img src="https://raw.githubusercontent.com/lrcampos97/Livron/master/App/src/assets/img/Telas.png">
+
 # Estrutura
 
-<img src="https://lh6.googleusercontent.com/WR26iLP-Gpvrb49KTv5gE3xhcnZUzqjZhQhQF5VbnutQTIHG6mO2KcB-T49tQX85n-4q88kREUrhEQ=w1920-h969-rw">
+<img src="https://raw.githubusercontent.com/lrcampos97/Livron/master/App/src/assets/img/Estrutura.png">
 
